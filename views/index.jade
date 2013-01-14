@@ -1,0 +1,126 @@
+extends layout
+
+block content
+  <div id="fb-root"></div>
+  script
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=189773724492188";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  center
+    div(style="width:auto")
+      div(style="float:left;margin-left:35px")
+        <div class="fb-like" data-href="http://PresElec.com" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false"></div>
+      div(style="float:right")
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://PresElec.com" data-text="PresElec, who will you vote for? - VOTING STARTS 10.11.12" data-hashtags="Election2012,Campaign2012,2012,InformedVoter,debate">Tweet</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    br
+    h1 VOTING STARTS #{date}
+    h1= title
+    //p Welcome to #{title}
+    p PresElec allows anyone to participate in voting for world leaders regardless of rights or privileges - all in fun.
+    br
+    div
+      ul(style="list-style-type: none;")
+        li.span2
+          div
+            img.img-polaroid(src="/images/obama.png", style="height: 128px; width:128px; background-color: #3333ff")
+            .caption
+              h4 Barack Obama
+              h4 Democratic
+              p
+                a.btn.btn-primary.btn-large(href="#myModal", role="button", data-toggle="modal") Vote Obama
+              span.badge.badge-inverse 0
+              br
+              p votes
+        li.span2
+          div
+            img.img-polaroid(src="/images/romney.png", style="height: 128px; width:128px; background-color: #ff3333")
+            .caption
+              h4 Mitt Romney
+              h4 Republican
+              p
+                a.btn.btn-primary.btn-large(href="#myModal", role="button", data-toggle="modal") Vote Romney
+              span.badge.badge-inverse 0
+              br
+              p votes
+        li.span2
+          div
+            img.img-polaroid(src="/images/johnson.png", style="height: 128px; width:128px; background-color: #ffcc00")
+            .caption
+              h4 Gary Johnson
+              h4 Libertarian
+              p
+                a.btn.btn-primary.btn-large(href="#myModal", role="button", data-toggle="modal") Vote Johnson
+              span.badge.badge-inverse 0
+              br
+              p votes
+        li.span2
+          div
+            img.img-polaroid(src="/images/stein.png", style="height: 128px; width:128px; background-color: #0bda51")
+            .caption
+              h4 Jill Stein
+              h4 Green
+              p
+                a.btn.btn-primary.btn-large(href="#myModal", role="button", data-toggle="modal") Vote Stein
+              span.badge.badge-inverse 0
+              br
+              p votes
+        li.span2
+          div
+            img.img-polaroid(src="/images/goode.jpg", style="height: 128px; width:128px; background-color: #a356de")
+            .caption
+              h4 Virgil Goode
+              h4 Constitution
+              p
+                a.btn.btn-primary.btn-large(href="#myModal", role="button", data-toggle="modal") Vote Goode
+              span.badge.badge-inverse 0
+              br
+              p votes
+          
+    //p #{barack.name} vs. #{mitt.name} vs. #{gary.name} vs. #{jill.name} vs. #{virgil.name}
+    
+    <a class="twitter-timeline"  href="https://twitter.com/search?q=%23debate" data-widget-id="253779630232846336">Tweets about "#debate"</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    
+    <a class="twitter-timeline"  href="https://twitter.com/search?q=%23election2012" data-widget-id="256543220153065472">Tweets about "#election2012"</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    
+    br
+  //  
+    <div class="modal hide" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">VOTING STARTS 10.11.12</h3>
+    </div>
+    <div class="modal-body">
+    <p>Remind me when voting starts!</p>
+    <form method="post">
+    <input id="input" type="text" name="email" value="youremail@example.com" />
+    
+    </div>
+    <div class="modal-footer">
+    <center>PresElec.com</center>
+    <BUTTON class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+    </div>
+  
+  script
+    $('#input').focus(function(){
+        $(this).val('');
+    }).blur(function(){
+          if($(this).val() == ''){
+              $(this).val('youremail@example.com');
+          }
+      })
+    
+    $('#submit').click(function(e){
+      if($('#input').val() == '' || $('#input').val() == 'youremail@example.com'){
+        e.preventDefault();
+      }
+    })
